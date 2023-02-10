@@ -168,7 +168,7 @@ export default function Box() {
  用法和 `<router-link>` 一样
  
  ```javascript
- <Link to={/home}>home</Link>
+ <Link to="/home">home</Link>
  ```
  
  `<a>` 标签虽然同样也可以完成路由的导航，但是同时也会发送一个完整的文档请求，而客户端路由则没有这个问题
