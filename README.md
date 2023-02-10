@@ -42,6 +42,41 @@ const router = createBrowserRouter([{
 4. 访问 localhost:5137
 ![image](https://user-images.githubusercontent.com/48917726/217997109-57f19903-015d-47ff-83c5-abc512795ddb.png)
 ## 错误处理
-1. 默认情况下当你的页面在渲染、加载数据或改变数据时抛出异常，react-router 都会捕获这个异常并渲染一个错误页面。比如说访问 localhost:5137/home，这个路由在 `router` 里匹配不到，所以会显示一个默认的 404 页面
+默认情况下当你的页面在渲染、加载数据或改变数据时抛出异常，react-router 都会捕获这个异常并渲染一个错误页面。比如说访问 localhost:5137/home，这个路由在 `router` 里匹配不到，所以会显示一个默认的 404 页面
 ![image](https://user-images.githubusercontent.com/48917726/218019340-24d61f46-a36d-4cb6-9354-d6ffedaced93.png)
+### 自定义错误页面
+1. 在 src 目录下新建一个 error-page.jsx
 
+2. 引入路由错误 hook
+```javascript
+import { useRouteError } from "react-router-dom";
+```
+3. 导出组件
+```javascript
+export default function ErrorPage() {
+  const error = useRouteError();
+  console.error(error);
+
+  return (
+    <div id="error-page">
+      <h1>Oops!</h1>
+      <p>Sorry, an unexpected error has occurred.</p>
+      <p>
+        <i>{error.statusText || error.message}</i>
+      </p>
+    </div>
+  );
+}
+```
+3. 在 main.jsx 中引入组件
+```javascript
+import ErrorPage from "./error-page";
+```
+4. 在 react-router 中使用
+```javascript
+const router = createBrowserRouter([{
+  path: '/',
+  element: <App />,
+  errorElement: <ErrorPage />
+}])
+```
