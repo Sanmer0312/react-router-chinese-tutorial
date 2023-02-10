@@ -134,3 +134,5 @@ export default function Box() {
  ```javascript
  <Link to={/home}>home</Link>
  ```
+ `<a>` 标签虽然同样也可以完成路由的导航，但是同时也会发送一个完整的文档请求，而客户端路由则没有这个问题
+ ![image](https://user-images.githubusercontent.com/48917726/218052552-be1a31ac-0945-476c-b392-b90b79e53620.png)
