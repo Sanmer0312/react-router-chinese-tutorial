@@ -196,6 +196,9 @@ const router = createBrowserRouter([{
   errorElement: <ErrorPage />,
   // 在这里使用它
   loader: loader,
+  // 子路由无法访问祖先路由的 loader
+  // 如果你想让子路由访问祖先路由的 loader
+  // 那么你也得在子路由里使用想要访问的 loader
   children: [{
     path: "contacts/:contactId",
     element: <Contact />,
