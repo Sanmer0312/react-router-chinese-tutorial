@@ -82,4 +82,13 @@ const router = createBrowserRouter([{
 ```
 5. 再次访问 localhost:5137/home,会看到显示的是自定义的错误页面，并且在控制台打印出了错误信息
 ![image](https://user-images.githubusercontent.com/48917726/218024095-6848926c-412e-4527-8f48-1a874d622e96.png)
-
+## 动态路由
+假设有一个 userInfo 页面，需要访问 user-info/userId （userId 是不固定的）来显示它，那么我们可以这么写
+```javascript
+{
+  // :something 的写法表示匹配所有字符
+  path: "user-info/:userId",
+  element: <UserInfo />,
+}
+```
+现在不管是访问 user-info/1,还是 user-info/2，他们都会导航到 userInfo 页面
