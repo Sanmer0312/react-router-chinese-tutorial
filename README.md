@@ -114,7 +114,7 @@ const router = createBrowserRouter([{
 }
 ```
 
-现在不管是访问 user-info/1,还是 user-info/2，他们都会导航到 userInfo 页面
+现在不管是访问 user-info/1，还是 user-info/2，他们都会导航到 userInfo 页面
 
 ## 嵌套路由
 
