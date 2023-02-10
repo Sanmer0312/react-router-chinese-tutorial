@@ -80,3 +80,6 @@ const router = createBrowserRouter([{
   errorElement: <ErrorPage />
 }])
 ```
+5. 再次访问 localhost:5137/home,会看到显示的是自定义的错误页面，并且在控制台打印出了错误信息
+![image](https://user-images.githubusercontent.com/48917726/218024095-6848926c-412e-4527-8f48-1a874d622e96.png)
+
