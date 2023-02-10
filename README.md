@@ -83,7 +83,7 @@ const router = createBrowserRouter([{
 5. 再次访问 localhost:5137/home,会看到显示的是自定义的错误页面，并且在控制台打印出了错误信息
 ![image](https://user-images.githubusercontent.com/48917726/218024095-6848926c-412e-4527-8f48-1a874d622e96.png)
 ## 动态路由
-假设有一个 userInfo 页面，需要访问 user-info/userId （userId 是不固定的）来显示它，那么我们可以这么写
+假设有一个 userInfo 页面，需要访问 user-info/userId （userId 是不确定的）来显示它，那么我们可以这么写
 ```javascript
 {
   // :something 的写法表示匹配所有字符
@@ -92,3 +92,36 @@ const router = createBrowserRouter([{
 }
 ```
 现在不管是访问 user-info/1,还是 user-info/2，他们都会导航到 userInfo 页面
+## 嵌套路由
+假设有一个 box 页面，主体是不确定的，头部底部是确定的元素，那么我们就需要用到嵌套路由
+
+1. 首先在 box 页面引入 `<outlet>`
+```javascript
+import { Outlet } from "react-router-dom";
+```
+2. 将 `<Outlet />` 放到你需要渲染的位置
+```javascript
+export default function Box() {
+    return <>
+        <header>头部</header>
+        <main>
+            <Outlet />
+        </main>
+        <footer>底部</footer>
+    </>
+}
+```
+3. 把需要嵌套的路由放到目标路由的 children 中，现在访问 /home 或者 /other，Home 或 Other 组件都会渲染到 Box 组件的 `<main>` 元素中
+```javascript
+{
+  path: '/',
+  element: <Box />,
+  children: [{
+    path: "home",
+    element: <Home />,
+  },{
+    path: "other",
+    element: <Other />,
+  }]
+}
+```
