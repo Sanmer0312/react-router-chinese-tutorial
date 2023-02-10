@@ -173,3 +173,70 @@ export default function Box() {
  `<a>` 标签虽然同样也可以完成路由的导航，但是同时也会发送一个完整的文档请求，而客户端路由则没有这个问题
  
  ![image](https://user-images.githubusercontent.com/48917726/218052552-be1a31ac-0945-476c-b392-b90b79e53620.png)
+ 
+ ## 加载数据
+ 
+1. 编写一个 loader
+ 
+ ```javascript
+ export function loader() {
+    return { contacts: [] };
+}
+```
+
+2. 在路由中使用它
+
+```javascript
+import Root, { loader } from "./routes/root";
+
+const router = createBrowserRouter([{
+  path: '/',
+  element: <Root />,
+  errorElement: <ErrorPage />,
+  // 在这里使用它
+  loader: loader,
+  children: [{
+    path: "contacts/:contactId",
+    element: <Contact />,
+  }]
+}])
+```
+
+3. 在组件中使用它，需要先引用 useLoaderData hook，useLoaderData 会返回 loader return 的数据，并且 react-router 会保持数据和 UI 同步
+
+```javascript
+import { useLoaderData } from "react-router-dom";
+
+export default function Root() {
+    const { contacts } = useLoaderData();
+
+    return (
+        <>
+            <nav>
+                {contacts.length ? (
+                    <ul>
+                        {contacts.map((contact) => (
+                            <li key={contact.id}>
+                                <Link to={`contacts/${contact.id}`}>
+                                    {contact.first || contact.last ? (
+                                        <>
+                                            {contact.first} {contact.last}
+                                        </>
+                                    ) : (
+                                        <i>No Name</i>
+                                    )}{" "}
+                                    {contact.favorite && <span>★</span>}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>
+                        <i>No contacts</i>
+                    </p>
+                )}
+            </nav>
+        </>
+    );
+}
+```
