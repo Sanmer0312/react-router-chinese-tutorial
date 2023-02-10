@@ -1,6 +1,6 @@
 # react-router-chinese-tutorial
 
-react-router 中文教程，基于 react-router 6.8.1 编写的教程
+react-router 中文教程，基于 react-router 6.8.1
 
 ## 开始
 
