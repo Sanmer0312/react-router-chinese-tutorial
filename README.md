@@ -205,7 +205,7 @@ const router = createBrowserRouter([{
 3. 在组件中使用它，需要先引用 useLoaderData hook，useLoaderData 会返回 loader return 的数据，并且 react-router 会保持数据和 UI 同步
 
 ```javascript
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 export default function Root() {
     const { contacts } = useLoaderData();
