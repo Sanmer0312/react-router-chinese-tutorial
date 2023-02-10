@@ -126,11 +126,11 @@ export default function Box() {
 }
 ```
 ## 客户端路由
-如果你用过 vue-router，那么你就会知道，在 vue-router 中导航到一个路由需要用到 <router-link>，那么在 react-router 中有没有类似的组件呢？答案是肯定的，在 react-router 中这个组件是 <link>，和 <outlet> 一样，如果你要使用 <link>，那么你得先引入它
+如果你用过 vue-router，那么你就会知道，在 vue-router 中导航到一个路由需要用到 `<router-link>`，那么在 react-router 中有没有类似的组件呢？答案是肯定的，在 react-router 中这个组件是 `<link>`，和 `<outlet>` 一样，如果你要使用 `<link>`，那么你得先引入它
  ```javascript
  import { Link } from "react-router-dom";
  ```
- 用法和 <router-link> 一样
+ 用法和 `<router-link>` 一样
  ```javascript
  <Link to={/home}>home</Link>
  ```
