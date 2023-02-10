@@ -94,6 +94,7 @@ import ErrorPage from "./error-page";
 const router = createBrowserRouter([{
   path: '/',
   element: <App />,
+  // 在这里
   errorElement: <ErrorPage />
 }])
 ```
