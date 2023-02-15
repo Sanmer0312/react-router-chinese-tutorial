@@ -284,3 +284,19 @@ export default function Root() {
     );
 }
 ```
+
+## Form 和 action
+
+react-router 有一个自带的 `<Form>` 组件，其行为和 html 原生表单 `<form>` 类似———如果没有 js 逻辑，在点击提交按钮时，表单组件会创建一个 FormData 发送给服务器
+
+```javascript
+import { Form } from "react-router-dom";
+
+export default function MyForm() {
+  return <Form method="post">
+    <button type="submit">submit</button>
+  </Form>
+}
+```
+
+而 react-router 会拦截这个请求，并将其转发到 action 中
