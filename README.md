@@ -127,7 +127,7 @@ const router = createBrowserRouter([{
 
 ```javascript
 export function loader({ params }) {
-    const userId = params;
+    const { userId } = params;
 
     return { userId };
 }
@@ -151,7 +151,7 @@ const router = createBrowserRouter([{
 import { useLoaderData } from "react-router-dom";
 
 export default function UserInfo() {
-  const userId = useLoaderData()
+  const { userId } = useLoaderData()
 
   return <p>{userId}</p>
 }
