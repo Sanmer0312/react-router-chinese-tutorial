@@ -109,13 +109,53 @@ const router = createBrowserRouter([{
 
 ```javascript
 {
-  // :something 的写法表示匹配所有字符
+  // 冒号具有特殊含义
+  // 冒号后边的片段叫动态段（dynamic segment）
+  // 动态段将匹配任意动态值
   path: "user-info/:userId",
   element: <UserInfo />,
 }
 ```
 
 现在不管是访问 user-info/1，还是 user-info/2，他们都会导航到 userInfo 页面
+
+### 获取URL参数
+
+动态段匹配到的动态值叫做 URL参数 或 参数，这些参数通过与动态段匹配的键传递给加载器（loader）。
+
+1. 在 userInfo 页面编写并导出 loader
+
+```javascript
+export function loader({ params }) {
+    const userId = params;
+
+    return { userId };
+}
+```
+
+2. 在路由中使用它
+
+```javascript
+import UserInfo, { loader } from "./routes/userInfo";
+
+const router = createBrowserRouter([{
+  path: 'user-info/:userId',
+  element: <UserInfo />,
+  loader,
+}])
+```
+
+3. 在 userInfo 页面调用 useLoaderData hook
+
+```javascript
+import { useLoaderData } from "react-router-dom";
+
+export default function UserInfo() {
+  const userId = useLoaderData()
+
+  return <p>{userId}</p>
+}
+```
 
 ## 嵌套路由
 
