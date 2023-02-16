@@ -294,6 +294,7 @@ import { Form } from "react-router-dom";
 
 export default function MyForm() {
   return <Form method="post">
+    // 这里可以输入一个名为 test 的字段
     <input type="text" name="test"/>
     <button type="submit">submit</button>
   </Form>
@@ -316,7 +317,8 @@ import { Form, redirect } from "react-router-dom";
 export async function action({ request, params }) {
     const formData = await request.formData()
     
-    console.log(formData.getAll('test'))
+    // 这是刚刚输入的 test 字段
+    console.log(formData.get('test'))
 
     // 这里返回一个 web Response，用于重定向到 userInfo 页面
     return redirect(`/userInfo/${params.userId}`)
