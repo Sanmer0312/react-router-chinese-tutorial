@@ -220,7 +220,7 @@ export default function Box() {
 1. 编写一个 loader
  
  ```javascript
- export function loader() {
+export function loader() {
     return { contacts: [] };
 }
 ```
@@ -233,7 +233,6 @@ import Root, { loader } from "./routes/root";
 const router = createBrowserRouter([{
   path: '/',
   element: <Root />,
-  errorElement: <ErrorPage />,
   // 在这里使用它
   loader: loader,
   // 子路由无法访问祖先路由的 loader
@@ -282,6 +281,17 @@ export default function Root() {
             </nav>
         </>
     );
+}
+```
+
+4. 也可以在 loader 里返回一个 web Response，用来导航到其他路由页面
+
+```javascript
+import { redirect } from "react-router-dom";
+
+export function loader() {
+    // 返回一个 web Response，用于重定向到 home 页面
+    return redirect('/home');
 }
 ```
 
