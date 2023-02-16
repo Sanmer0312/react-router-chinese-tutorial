@@ -295,6 +295,18 @@ export function loader() {
 }
 ```
 
+## 活动链接样式
+
+如果一个 `<Link>` 匹配的路由和当前页面路由匹配的话，我们称之为活动链接（active link）
+
+现在我们要给活动链接设置特殊样式，如果用 `<Link>` 组件来做的话，就需要手写一些逻辑判断
+
+而 react-router 内置了一个 `<NavLink>`，专门用于处理这种情况
+
+```javascript
+import {NavLink}
+```
+
 ## Form 和 action
 
 react-router 有一个自带的 `<Form>` 组件，其行为和 html 原生表单 `<form>` 类似———如果没有 js 逻辑，在点击提交按钮时，表单组件会创建一个 FormData 发送给服务器
