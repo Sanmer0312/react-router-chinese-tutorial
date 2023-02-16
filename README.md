@@ -302,6 +302,8 @@ export default function MyForm() {
 
 而 react-router 会拦截这个请求，并将其转发到 action 中
 
+首先在 `<Form>` 所在页面定义并导出一个 action
+
 ```javascript
 import { Form, redirect } from "react-router-dom";
 
@@ -321,7 +323,7 @@ export async function action({ request, params }) {
 }
 ```
 
-要想使用这个 action，还需要在 router 中引入它
+然后在 router 中引入它
 
 ```javascript
 import Root, { loader as rootLoader, action as rootAction } from "./routes/root";
@@ -330,7 +332,7 @@ import Root, { loader as rootLoader, action as rootAction } from "./routes/root"
   path: '/',
   element: <Root />,
   loader: rootLoader,
-  // 在这里使用 action
+  // 在这里
   action: rootAction,
   children: [{
     path: "userInfo/:userId",
