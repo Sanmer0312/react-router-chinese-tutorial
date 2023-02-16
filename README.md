@@ -294,9 +294,47 @@ import { Form } from "react-router-dom";
 
 export default function MyForm() {
   return <Form method="post">
+    <input type="text" name="test"/>
     <button type="submit">submit</button>
   </Form>
 }
 ```
 
 而 react-router 会拦截这个请求，并将其转发到 action 中
+
+```javascript
+import { Form, redirect } from "react-router-dom";
+
+// action 必须返回值
+// 返回值可以是一个 web Response，也可以是其他任何东西
+// 可以通过 useActionData 获取 action 的返回值
+// request 里包含了请求相关的信息
+// request.formData() 返回一个 Promise
+// params 是 URL参数
+export async function action({ request, params }) {
+    const formData = await request.formData()
+    
+    console.log(formData.getAll('test'))
+
+    // 这里返回一个 web Response，用于重定向到 userInfo 页面
+    return redirect(`/userInfo/${params.userId}`)
+}
+```
+
+要想使用这个 action，还需要在 router 中引入它
+
+```javascript
+import Root, { loader as rootLoader, action as rootAction } from "./routes/root";
+
+[{
+  path: '/',
+  element: <Root />,
+  loader: rootLoader,
+  // 在这里使用 action
+  action: rootAction,
+  children: [{
+    path: "userInfo/:userId",
+    element: <UserInfo />,
+  }]
+}]
+```
