@@ -316,9 +316,12 @@ import { Form, redirect } from "react-router-dom";
 // params 是 URL参数
 export async function action({ request, params }) {
     const formData = await request.formData()
-    
     // 这是刚刚输入的 test 字段
     console.log(formData.get('test'))
+    
+    // 可以用 Object.fromEntries 来将 formData 转成一个普通对象
+    const temp = Object.fromEntries(formData)
+    console.log(temp.test)
 
     // 这里返回一个 web Response，用于重定向到 userInfo 页面
     return redirect(`/userInfo/${params.userId}`)
