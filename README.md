@@ -217,7 +217,7 @@ export default function Box() {
  
  ## 加载数据
  
-1. 编写一个 loader
+1. 编写一个 loader,loader 是在进入路由时立即触发的函数，可以返回任意数据，然后通过 useLoaderData 可以获取到 loader 返回的数据
  
  ```javascript
 export function loader() {
