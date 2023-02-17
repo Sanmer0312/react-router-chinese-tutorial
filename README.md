@@ -304,7 +304,31 @@ export function loader() {
 而 react-router 内置了一个 `<NavLink>`，专门用于处理这种情况
 
 ```javascript
-import {NavLink}
+import {NavLink} from "react-router-dom";
+
+export default function TabBar() {
+  const tabs = [
+    {
+      name: "首页",
+      path: "/home"
+    },
+    {
+      name: "个人中心",
+      path: "/personal-center"
+    }
+  ]
+
+  return tabs.map(item=>(<NavLink
+    key={item.path}
+    to={item.path}
+    // react-router 通过 className 函数返回 isActive 和 isPending 状态
+    // 当用户将要进入当前路由，数据还在加载（等待 loader return）时，isPending 为true
+    // 当用户已经进入当前路由，isActive 为true
+    className={({ isActive, isPending }) => isActive ? 'active' : isPending ? 'pending' : ''}
+  >
+    {item.name}
+  </NavLink>))
+}
 ```
 
 ## Form 和 action
