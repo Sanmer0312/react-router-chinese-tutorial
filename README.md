@@ -391,3 +391,9 @@ import Root, { loader as rootLoader, action as rootAction } from "./routes/root"
   }]
 }]
 ```
+
+## 获取导航状态
+
+通过 useNavigation hook 可以获取当前导航状态，可能的值有 'idle' | 'submitting' | 'loading'
+
+通过它我们可以实现全局加载样式统一管理，比如在加载时给页面显示一个进度条什么的
