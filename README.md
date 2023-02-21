@@ -386,7 +386,7 @@ export default function MyForm() {
 }
 ```
 
-而 react-router 会拦截这个请求，并将其转发到 action 中
+而 react-router 会拦截这个请求，如果 method 是 get 则会将请求转发到 loader 中，如果是 post 则转发到 action 中
 
 首先在 `<Form>` 所在页面定义并导出一个 action
 
