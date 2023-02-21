@@ -47,6 +47,18 @@ const router = createBrowserRouter([{
 
 ![image](https://user-images.githubusercontent.com/48917726/217997109-57f19903-015d-47ff-83c5-abc512795ddb.png)
 
+5. react-router 也提供了通过 jsx 创建路由的方法，这两种写法只有风格上的区别，用你喜欢就好了
+
+```javascript
+import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<div>hello world</div>}></Route>
+  )
+)
+```
+
 ## 错误处理
 
 默认情况下当你的页面在渲染、加载数据或改变数据时抛出异常，react-router 都会捕获这个异常并渲染一个错误页面。比如说访问 localhost:5137/home，这个路由在 `router` 里匹配不到，所以会显示一个默认的 404 页面
