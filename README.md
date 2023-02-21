@@ -433,6 +433,24 @@ import Root, { loader as rootLoader, action as rootAction } from "./routes/root"
 
 ## 获取导航状态
 
-通过 useNavigation hook 可以获取当前导航状态，可能的值有 'idle' | 'submitting' | 'loading'
+通过 useNavigation hook 可以获取当前导航信息
 
 通过它我们可以实现全局加载样式统一管理，比如在加载时给页面显示一个进度条什么的
+
+### navigation.state
+
+可能的值有:
+
+1. 'idle' 空闲状态
+2. 'submitting' 正在执行当前路由的 action 方法
+3. 'loading' 正在执行当前路由的 loader 方法
+
+### navigation.formData
+
+当通过 `<Form method>` 为 POST、PUT、PATCH、DELETE 或用 useSubmit 提交表单时，formData 会是一个 FormData 对象，里边保存了提交的表单数据
+
+当通过 GET 方法提交表单的情况时，formData 将为空，这时表单数据将返回在 navigation.location.search 中
+
+### navigation.location
+
+location 里包含了接下来将要进入的下一个导航的信息
