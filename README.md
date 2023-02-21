@@ -238,6 +238,22 @@ export default function Box() {
  
  ![image](https://user-images.githubusercontent.com/48917726/218052552-be1a31ac-0945-476c-b392-b90b79e53620.png)
  
+ ## 编程式导航
+ 
+ useNavigate hook 返回一个用于函数式导航的函数
+ 
+ ```javascript
+ const navigate = useNavigate()
+ 
+ // 可以传一个整数
+ // 表示在历史堆栈中前进或后退多少步
+ navigate(-1)
+ 
+ // 可以传一个 To 值，类似于 <Link to>
+ // 第二个参数可以传一个 option，包括 {replace,state,relative}
+ navigate('/home',{replace: true})
+ ```
+ 
  ## 加载数据
  
 1. 编写一个 loader,loader 是在进入路由时立即触发的函数，可以返回任意数据，然后通过 useLoaderData 可以获取到 loader 返回的数据
