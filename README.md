@@ -47,7 +47,7 @@ const router = createBrowserRouter([{
 
 ![image](https://user-images.githubusercontent.com/48917726/217997109-57f19903-015d-47ff-83c5-abc512795ddb.png)
 
-5. react-router 也提供了通过 jsx 创建路由的方法，这两种写法只有风格上的区别，用你喜欢就好了
+5. react-router 也提供了通过 jsx 创建路由的方法，这两种写法只有风格上的区别，用你喜欢的就好了
 
 ```javascript
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom'
