@@ -197,6 +197,29 @@ export default function Box() {
 }
 ```
 
+### 索引路由
+
+按照上面的路由，当你访问 '/' 时，因为没有匹配的子路由 `<Outlet>` 部分会是一片空白，为此你可以设置一个索引路由（index route）来当作默认子路由
+
+```javascript
+{
+  path: '/',
+  element: <Box />,
+  children: [{
+    // 注意是 index，而不是 path
+    // 它会告诉路由，当用户访问父路由的确切地址时，匹配并渲染 <Index> 组件
+    index: true,
+    element: <Index />
+  },{
+    path: "home",
+    element: <Home />,
+  },{
+    path: "other",
+    element: <Other />,
+  }]
+}
+```
+
 ## 客户端路由
 
 如果你用过 vue-router，那么你就会知道，在 vue-router 中导航到一个路由需要用到 `<router-link>`，那么在 react-router 中有没有类似的组件呢？答案是肯定的，在 react-router 中这个组件是 `<link>`，和 `<outlet>` 一样，如果你要使用 `<link>`，那么你得先引入它
